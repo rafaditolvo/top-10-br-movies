@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { MoviesService } from './movies.service';
+import { Model, Document } from 'mongoose';
 
 @Controller('movies')
 export class MoviesController {
