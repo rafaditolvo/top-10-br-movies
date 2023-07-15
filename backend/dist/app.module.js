@@ -14,6 +14,8 @@ const movies_service_1 = require("./movies/movies.service");
 const likes_controller_1 = require("./likes/likes.controller");
 const likes_service_1 = require("./likes/likes.service");
 const like_model_1 = require("./likes/like.model");
+const auth_module_1 = require("./auth/auth.module");
+const users_module_1 = require("./users/users.module");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
@@ -21,6 +23,8 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/movies-db'),
             mongoose_1.MongooseModule.forFeature([{ name: 'Like', schema: like_model_1.LikeSchema }]),
+            auth_module_1.AuthModule,
+            users_module_1.UsersModule,
         ],
         controllers: [likes_controller_1.LikesController, movies_controller_1.MoviesController],
         providers: [likes_service_1.LikesService, movies_service_1.MoviesService],

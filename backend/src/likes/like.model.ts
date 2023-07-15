@@ -8,6 +8,12 @@ export interface Like extends Document {
 
 export const LikeSchema = new Schema({
   movieId: { type: Number, required: true },
-  movieName: { type: String, required: true }, 
+  movieName: { type: String, required: true },
   userId: { type: String, required: true },
 });
+
+
+export interface FilmesMaisCurtidosInterface extends Document{
+  _id: number;
+  totalLikes: number;
+}

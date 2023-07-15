@@ -43,3 +43,7 @@ export declare const LikeSchema: Schema<any, import("mongoose").Model<any, any, 
 } & {
     _id: import("mongoose").Types.ObjectId;
 }>;
+export interface FilmesMaisCurtidosInterface extends Document {
+    _id: number;
+    totalLikes: number;
+}

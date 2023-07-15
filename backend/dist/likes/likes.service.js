@@ -24,13 +24,19 @@ let LikesService = exports.LikesService = class LikesService {
         const newLike = new this.likeModel({ movieId, movieName, userId });
         const savedLike = await newLike.save();
         console.log('Curtida salva:', savedLike);
+        return await this.updateMostLikedMoviesView();
         return savedLike;
     }
-    async getMostLikedMovies() {
-        return this.likeModel
-            .aggregate([
-            { $group: { _id: '$movieId', totalLikes: { $sum: 1 } } },
+    async updateMostLikedMoviesView() {
+        const aggregationPipeline = [
+            { $group: { _id: { movieId: '$movieId', movieName: '$movieName' }, totalLikes: { $sum: 1 } } },
             { $sort: { totalLikes: -1 } },
+        ];
+        const aggregationResult = await this.likeModel.collection.aggregate(aggregationPipeline).toArray();
+        return aggregationResult;
+    }
+    async getMostLikedMovies() {
+        return this.likeModel.collection.aggregate([
             {
                 $lookup: {
                     from: 'movies',
@@ -39,9 +45,7 @@ let LikesService = exports.LikesService = class LikesService {
                     as: 'movieDetails',
                 },
             },
-            {
-                $unwind: '$movieDetails',
-            },
+            { $unwind: '$movieDetails' },
             {
                 $project: {
                     _id: 0,
@@ -50,8 +54,7 @@ let LikesService = exports.LikesService = class LikesService {
                     movieTitle: '$movieDetails.title',
                 },
             },
-        ])
-            .exec();
+        ]).toArray();
     }
 };
 exports.LikesService = LikesService = __decorate([

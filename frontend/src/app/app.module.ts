@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { PopularMovieComponent } from './popular-movie/popular-movie.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { MostLikedMoviesComponent } from './most-liked-movies/most-liked-movies.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PopularMovieComponent
+    PopularMovieComponent,
+    MostLikedMoviesComponent,
+   
   ],
   imports: [
     BrowserModule,

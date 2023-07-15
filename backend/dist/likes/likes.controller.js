@@ -15,12 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LikesController = void 0;
 const common_1 = require("@nestjs/common");
 const likes_service_1 = require("./likes.service");
+const auth_guard_1 = require("../auth/auth.guard");
 let LikesController = exports.LikesController = class LikesController {
     constructor(likesService) {
         this.likesService = likesService;
     }
     async createLike(createLikeDto, req) {
-        const userId = 'token';
+        const userId = req.user.sub;
         return this.likesService.createLike(createLikeDto.movieId, createLikeDto.movieName, userId);
     }
     async getMostLikedMovies() {
@@ -29,14 +30,16 @@ let LikesController = exports.LikesController = class LikesController {
     }
 };
 __decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], LikesController.prototype, "createLike", null);
 __decorate([
-    (0, common_1.Get)('/most-liked'),
+    (0, common_1.Get)('/most-liked-movies'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)

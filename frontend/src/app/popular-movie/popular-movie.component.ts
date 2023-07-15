@@ -56,7 +56,7 @@ export class PopularMovieComponent implements OnInit {
         this.movies = response;
       },
       (error) => {
-        console.error('Failed to fetch popular movies:', error);
+        console.error('Falha ao buscar os filmes populares:', error);
       }
     );
   }
@@ -76,14 +76,13 @@ export class PopularMovieComponent implements OnInit {
         }, 1000);
       },
       (error) => {
-        console.error('Failed to save like:', error);
+        console.error('Falha ao registrar a curtida:', error);
         this.message = 'Falha ao registrar a curtida. Por favor, tente novamente.';
       }
     );
   }
 
   getImageUrl(posterPath: string): string {
-    // Substitua 'http://localhost:4000' pelo URL base do servidor onde as imagens estão hospedadas
-    return 'http://localhost:4000' + posterPath;
+    return 'URL_DO_BACKEND' + posterPath;
   }
 }
