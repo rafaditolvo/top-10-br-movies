@@ -1,36 +1,45 @@
 .movie-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .movie-card {
-    width: 300px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .movie-poster {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  .movie-details {
-    margin-top: 10px;
-  }
-  
-  .movie-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .movie-overview {
-    margin-top: 5px;
-  }
-  
-  .like-button {
-    margin-top: 10px;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie-card {
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.movie-details {
+  margin-top: 10px;
+}
+
+.movie-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.movie-overview {
+  margin-top: 5px;
+}
+
+.like-button {
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+

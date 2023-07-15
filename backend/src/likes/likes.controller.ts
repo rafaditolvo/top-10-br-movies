@@ -1,19 +1,21 @@
 import { Controller, Post, Body, UseGuards, Get } from '@nestjs/common';
-
 import { LikesService } from './likes.service';
 
 @Controller('likes')
 export class LikesController {
-  constructor(private likesService: LikesService) {}
+  constructor(private readonly likesService: LikesService) {}
 
   @Post()
- 
   async createLike(
-    @Body() createLikeDto: { movieId: number },
+    @Body() createLikeDto: { movieId: number; movieName: string },
     req,
   ): Promise<any> {
-    const userId = req.user.userId;
-    return this.likesService.createLike(createLikeDto.movieId, userId);
+    const userId = 'token';
+    return this.likesService.createLike(
+      createLikeDto.movieId,
+      createLikeDto.movieName,
+      userId,
+    );
   }
 
   @Get('/most-liked')

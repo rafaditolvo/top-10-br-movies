@@ -8,7 +8,7 @@ import { LikeSchema } from './likes/like.model';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/movie-db'),
+    MongooseModule.forRoot('mongodb://localhost:27017/movies-db'),
     MongooseModule.forFeature([{ name: 'Like', schema: LikeSchema }]),
 
   ],

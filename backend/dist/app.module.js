@@ -19,7 +19,7 @@ let AppModule = exports.AppModule = class AppModule {
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/movie-db'),
+            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/movies-db'),
             mongoose_1.MongooseModule.forFeature([{ name: 'Like', schema: like_model_1.LikeSchema }]),
         ],
         controllers: [likes_controller_1.LikesController, movies_controller_1.MoviesController],

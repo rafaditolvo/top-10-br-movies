@@ -7,7 +7,7 @@ async function bootstrap() {
 
   // Configurar o CORS
   const corsOptions: CorsOptions = {
-    origin: 'http://localhost:4200', // Ou a origem do seu aplicativo Angular
+    origin: 'http://localhost:4200', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Accept',
     preflightContinue: false,

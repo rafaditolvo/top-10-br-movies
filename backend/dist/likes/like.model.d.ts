@@ -25,16 +25,20 @@
 import { Schema, Document } from 'mongoose';
 export interface Like extends Document {
     movieId: number;
+    movieName: string;
     userId: string;
 }
 export declare const LikeSchema: Schema<any, import("mongoose").Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
     movieId: number;
+    movieName: string;
     userId: string;
 }, Document<unknown, {}, {
     movieId: number;
+    movieName: string;
     userId: string;
 }> & {
     movieId: number;
+    movieName: string;
     userId: string;
 } & {
     _id: import("mongoose").Types.ObjectId;

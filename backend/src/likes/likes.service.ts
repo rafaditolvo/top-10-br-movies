@@ -7,8 +7,8 @@ import { Like } from './like.model';
 export class LikesService {
   constructor(@InjectModel('Like') private likeModel: Model<Like>) {}
 
-  async createLike(movieId: number, userId: string): Promise<Like> {
-    const newLike = new this.likeModel({ movieId, userId });
+  async createLike(movieId: number, movieName: string, userId: string): Promise<Like> {
+    const newLike = new this.likeModel({ movieId, movieName, userId });
     const savedLike = await newLike.save();
     console.log('Curtida salva:', savedLike); // Verifica os dados da curtida salva no console
     return savedLike;

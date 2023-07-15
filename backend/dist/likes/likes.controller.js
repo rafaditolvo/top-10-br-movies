@@ -20,8 +20,8 @@ let LikesController = exports.LikesController = class LikesController {
         this.likesService = likesService;
     }
     async createLike(createLikeDto, req) {
-        const userId = req.user.userId;
-        return this.likesService.createLike(createLikeDto.movieId, userId);
+        const userId = 'token';
+        return this.likesService.createLike(createLikeDto.movieId, createLikeDto.movieName, userId);
     }
     async getMostLikedMovies() {
         const mostLikedMovies = await this.likesService.getMostLikedMovies();

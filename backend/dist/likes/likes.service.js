@@ -20,8 +20,8 @@ let LikesService = exports.LikesService = class LikesService {
     constructor(likeModel) {
         this.likeModel = likeModel;
     }
-    async createLike(movieId, userId) {
-        const newLike = new this.likeModel({ movieId, userId });
+    async createLike(movieId, movieName, userId) {
+        const newLike = new this.likeModel({ movieId, movieName, userId });
         const savedLike = await newLike.save();
         console.log('Curtida salva:', savedLike);
         return savedLike;
