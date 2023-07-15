@@ -20,11 +20,11 @@ let MoviesService = exports.MoviesService = class MoviesService {
         };
         try {
             const response = await axios_1.default.get(endpoint, { params });
-            const movies = response.data.results;
+            const movies = response.data.results.slice(0, 10);
             return movies;
         }
         catch (error) {
-            throw new Error('Failed to fetch popular movies from TMDB.');
+            throw new Error('Falha ao buscar os filmes populares do TMDB.');
         }
     }
 };

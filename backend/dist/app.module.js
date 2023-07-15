@@ -8,17 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
+const mongoose_1 = require("@nestjs/mongoose");
 const movies_controller_1 = require("./movies/movies.controller");
 const movies_service_1 = require("./movies/movies.service");
+const likes_controller_1 = require("./likes/likes.controller");
+const likes_service_1 = require("./likes/likes.service");
+const like_model_1 = require("./likes/like.model");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
-        controllers: [app_controller_1.AppController, movies_controller_1.MoviesController],
-        providers: [app_service_1.AppService, movies_service_1.MoviesService],
+        imports: [
+            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/movie-db'),
+            mongoose_1.MongooseModule.forFeature([{ name: 'Like', schema: like_model_1.LikeSchema }]),
+        ],
+        controllers: [likes_controller_1.LikesController, movies_controller_1.MoviesController],
+        providers: [likes_service_1.LikesService, movies_service_1.MoviesService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

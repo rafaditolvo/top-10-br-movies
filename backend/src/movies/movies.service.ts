@@ -3,7 +3,7 @@ import axios from 'axios';
 
 @Injectable()
 export class MoviesService {
-  async getPopularMovies() {
+  async getPopularMovies(): Promise<any> {
     const apiKey = '4f0b208f6f47c15720981a0ca2adac58';
     const endpoint = 'https://api.themoviedb.org/3/movie/popular';
     const params = {
@@ -14,10 +14,10 @@ export class MoviesService {
 
     try {
       const response = await axios.get(endpoint, { params });
-      const movies = response.data.results;
+      const movies = response.data.results.slice(0, 10); // Retorna apenas os 10 primeiros filmes
       return movies;
     } catch (error) {
-      throw new Error('Failed to fetch popular movies from TMDB.');
+      throw new Error('Falha ao buscar os filmes populares do TMDB.');
     }
   }
 }

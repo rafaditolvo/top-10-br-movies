@@ -1,8 +1,10 @@
-<h2>Filmes Populares</h2>
-
-<ul>
-  <li *ngFor="let movie of movies">
-    <span>{{ movie.title }}</span>
-    <button (click)="likeMovie(movie)" [disabled]="movie.liked">Curtir</button>
-  </li>
-</ul>
+<div class="movie-container">
+  <div class="movie-card" *ngFor="let movie of movies">
+    <img class="movie-poster" [src]="'http://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="Movie Poster">
+    <div class="movie-details">
+      <h3 class="movie-title">{{ movie.title }}</h3>
+      <p class="movie-overview">{{ movie.overview }}</p>
+      <button class="like-button" (click)="likeMovie(movie)">Like</button>
+    </div>
+  </div>
+</div>

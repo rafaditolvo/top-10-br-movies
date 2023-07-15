@@ -1,12 +1,18 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { MongooseModule } from '@nestjs/mongoose';
 import { MoviesController } from './movies/movies.controller';
 import { MoviesService } from './movies/movies.service';
+import { LikesController } from './likes/likes.controller';
+import { LikesService } from './likes/likes.service';
+import { LikeSchema } from './likes/like.model';
 
 @Module({
-  imports: [],
-  controllers: [AppController, MoviesController],
-  providers: [AppService, MoviesService],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost:27017/movie-db'),
+    MongooseModule.forFeature([{ name: 'Like', schema: LikeSchema }]),
+
+  ],
+  controllers: [LikesController, MoviesController],
+  providers: [LikesService, MoviesService],
 })
 export class AppModule {}
