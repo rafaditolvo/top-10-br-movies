@@ -13,7 +13,7 @@ export const LikeSchema = new Schema({
 });
 
 
-export interface FilmesMaisCurtidosInterface extends Document{
+export interface FilmesMaisCurtidosInterface{
   _id: number;
   totalLikes: number;
 }

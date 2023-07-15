@@ -64,8 +64,9 @@ export class PopularMovieComponent implements OnInit {
   likeMovie(movie: any): void {
     const movieId = movie.id;
     const movieName = movie.title;
+    const poster_path = movie.poster_path;
 
-    this.http.post('http://localhost:4000/likes', { movieId, movieName }).subscribe(
+    this.http.post('http://localhost:4000/likes', { movieId, movieName, poster_path }, { headers: {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTY4OTQzNjY0MywiZXhwIjoxNjg5NDY2NjQzfQ.gkuvGfyusBKCKlbzN9P68S0ZGCc0dSVQqBykLM0klxQ"}}).subscribe(
       () => {
         this.message = 'Curtida registrada com sucesso!';
         movie.liked = true;
@@ -83,6 +84,6 @@ export class PopularMovieComponent implements OnInit {
   }
 
   getImageUrl(posterPath: string): string {
-    return 'URL_DO_BACKEND' + posterPath;
+    return 'https://image.tmdb.org/t/p/original' + posterPath;
   }
 }

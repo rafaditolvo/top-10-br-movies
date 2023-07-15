@@ -2,6 +2,7 @@
 
 <ul>
   <li *ngFor="let filme of filmes">
-    {{ filme.movieTitle }} ({{ filme.totalLikes }} likes)
+    <img [src]="getImageUrl(filme.poster_path)" alt="{{ filme.movieName }}" width="64px" class="movie-poster">
+    {{ filme.movieName }} ({{ filme.totalLikes }} likes)
   </li>
 </ul>

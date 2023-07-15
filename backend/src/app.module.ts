@@ -7,11 +7,13 @@ import { LikesService } from './likes/likes.service';
 import { LikeSchema } from './likes/like.model';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { MovieSchema } from './movies/movies.model';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/movies-db'),
     MongooseModule.forFeature([{ name: 'Like', schema: LikeSchema }]),
+    MongooseModule.forFeature([{ name: 'Movie', schema: MovieSchema }]),
     AuthModule,
     UsersModule,
 

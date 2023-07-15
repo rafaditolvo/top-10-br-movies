@@ -9,13 +9,14 @@ export class LikesController {
   @UseGuards(AuthGuard)
   @Post()
   async createLike(
-    @Body() createLikeDto: { movieId: number; movieName: string },
+    @Body() createLikeDto: { movieId: number; movieName: string, poster_path: string },
     @Req() req
   ): Promise<any> {
     const userId =  req.user.sub;
     return this.likesService.createLike(
       createLikeDto.movieId,
       createLikeDto.movieName,
+      createLikeDto.poster_path,
       userId,
     );
   }
@@ -23,6 +24,7 @@ export class LikesController {
   @Get('/most-liked-movies')
   async getMostLikedMovies(): Promise<any> {
     const mostLikedMovies = await this.likesService.getMostLikedMovies();
+    console.log(mostLikedMovies)
     return mostLikedMovies;
   }
 

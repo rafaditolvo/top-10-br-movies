@@ -1,54 +1,72 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model, Document } from 'mongoose';
-import { Like } from './like.model';
+import { Inject, Injectable } from "@nestjs/common";
+import { InjectModel, InjectConnection } from "@nestjs/mongoose";
+import { Model, Document } from "mongoose";
+import { Like } from "./like.model";
+import { Connection } from "mongoose";
+import { MoviesService } from "src/movies/movies.service";
 
 @Injectable()
 export class LikesService {
-  constructor(@InjectModel('Like') private likeModel: Model<Like>) {}
+  constructor(
+    @InjectModel("Like") private likeModel: Model<Like>,
+    private movieService: MoviesService,
+    @InjectConnection() private connection: Connection
+  ) {}
 
-  // async createLike(movieId: number, movieName: string, userId: string): Promise<Like> {
-    async createLike(movieId: number, movieName: string, userId: string): Promise<any> {
+  async createLike(
+    movieId: number,
+    movieName: string,
+    poster_path: string,
+    userId: string
+  ): Promise<any> {
     const newLike = new this.likeModel({ movieId, movieName, userId });
     const savedLike = await newLike.save();
-    console.log('Curtida salva:', savedLike);
+
+    await this.movieService.insertMovie({ movieId, movieName, poster_path });
 
     // Atualiza o total de curtidas na view "filmesMaisCurtidos"
-    return await this.updateMostLikedMoviesView();
+    await this.updateMostLikedMoviesView();
 
     return savedLike;
   }
 
-  async updateMostLikedMoviesView(): Promise<any> {
+  async updateMostLikedMoviesView(): Promise<void> {
     const aggregationPipeline = [
-      { $group: { _id: {movieId:'$movieId', movieName:'$movieName'}, totalLikes: { $sum: 1 } } },
+      { $group: { _id: "$movieId", totalLikes: { $sum: 1 } } },
       { $sort: { totalLikes: -1 } },
     ];
-  
-    const aggregationResult = await this.likeModel.collection.aggregate(aggregationPipeline).toArray();
-    return aggregationResult;
+
+    try {
+      await this.likeModel.db.createCollection("filmesMaisCurtidos", {
+        viewOn: "likes",
+        pipeline: aggregationPipeline,
+      });
+    } catch (e) {}
   }
-  
 
   async getMostLikedMovies(): Promise<any> {
-    return this.likeModel.collection.aggregate([
-      {
-        $lookup: {
-          from: 'movies',
-          localField: '_id',
-          foreignField: 'movieId',
-          as: 'movieDetails',
+    return this.connection
+      .collection("filmesMaisCurtidos")
+      .aggregate([
+        {
+          $lookup: {
+            from: "movies",
+            localField: "_id",
+            foreignField: "movieId",
+            as: "movieDetails",
+          },
         },
-      },
-      { $unwind: '$movieDetails' },
-      {
-        $project: {
-          _id: 0,
-          movieId: '$_id',
-          totalLikes: 1,
-          movieTitle: '$movieDetails.title',
+        { $unwind: "$movieDetails" },
+        {
+          $project: {
+            _id: 0,
+            totalLikes: 1,
+            movieId: "$movieDetails.movieId",
+            movieName: "$movieDetails.movieName",
+            poster_path: "$movieDetails.poster_path",
+          },
         },
-      },
-    ]).toArray();
+      ])
+      .toArray();
   }
 }

@@ -17,7 +17,11 @@ export class MostLikedMoviesComponent implements OnInit {
 
   getMostLikedMovies() {
     this.http.get<any[]>('http://localhost:4000/likes/most-liked-movies').subscribe(filmes => {
+      console.log(filmes)
       this.filmes = filmes;
     });
+  }
+  getImageUrl(posterPath: string): string {
+    return 'https://image.tmdb.org/t/p/original' + posterPath;
   }
 }
