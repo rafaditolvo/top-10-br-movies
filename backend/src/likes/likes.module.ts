@@ -4,7 +4,6 @@ import { LikesController } from "./likes.controller";
 import { LikeSchema } from "./like.model";
 import { LikesService } from "./likes.service";
 import { MoviesModule } from "src/movies/movies.module";
-import { MoviesService } from "src/movies/movies.service";
 
 @Module({
   imports: [
@@ -13,6 +12,6 @@ import { MoviesService } from "src/movies/movies.service";
     MongooseModule.forFeature([{name: 'Like', schema: LikeSchema}])
   ],
   controllers: [LikesController],
-  providers: [LikesService, MoviesService]
+  providers: [LikesService]
 })
 export class LikesModule {}
