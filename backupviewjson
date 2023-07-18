@@ -1,0 +1,41 @@
+[
+  {
+    $group: {
+      _id: "$movieId",
+      totalLikes: {
+        $sum: 1,
+      },
+      movieId: {
+        $first: "$movieId",
+      },
+      movieName: {
+        $first: "$movieName",
+      },
+    },
+  },
+  {
+    $sort: {
+      totalLikes: -1,
+    },
+  },
+  {
+    $lookup: {
+      from: "movies",
+      localField: "movieId",
+      foreignField: "movieId",
+      as: "movieDetails",
+    },
+  },
+  {
+    $unwind: "$movieDetails",
+  },
+  {
+    $project: {
+      _id: 0,
+      movieId: 1,
+      movieName: 1,
+      totalLikes: 1,
+      movieTitle: "$movieDetails.title",
+    },
+  },
+]
