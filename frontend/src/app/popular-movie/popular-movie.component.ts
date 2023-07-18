@@ -41,16 +41,18 @@ export class PopularMovieComponent implements OnInit {
     const movieName = movie.title;
     const poster_path = movie.poster_path;
 
+    const token = localStorage.getItem('token')
+
     this.http.post(
       'http://localhost:4000/likes',
       { movieId, movieName, poster_path },
-      { headers: { "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2ODk2MzQ4MDQsImV4cCI6MTY4OTcyMTIwNH0.7fgeLUUfI8qhuzK0W8TeTaarVMBAf4vA-ZC-iT6Lw-w" } } // Replace with your actual access token
+      { headers: { "Authorization": `Bearer ${token}` } } 
     ).subscribe(
       () => {
         this.message = 'Curtida registrada com sucesso!';
         movie.liked = true;
-        this.likeLogService.adicionarCurtida(movie); // Update the like log using the LikeLogService
-        // Hide the message after 1 second
+        this.likeLogService.adicionarCurtida(movie);
+      
         setTimeout(() => {
           this.message = '';
         }, 1000);
@@ -64,7 +66,7 @@ export class PopularMovieComponent implements OnInit {
   }
 
   flipCard(movie: any): void {
-    // Lógica para virar a carta do filme
+   
   }
 
   getImageUrl(posterPath: string): string {

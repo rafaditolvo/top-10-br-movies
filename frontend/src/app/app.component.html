@@ -1,5 +1,6 @@
 <div>
   <app-popular-movie (refresh)="refresh()"></app-popular-movie>
   <app-most-liked-movies [mostLikedMovies]=filmes></app-most-liked-movies>
+  <app-login (verificarLogado)="verificarLogado()" *ngIf=deslogado></app-login>
 </div>
 

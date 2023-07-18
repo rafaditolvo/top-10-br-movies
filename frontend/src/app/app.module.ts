@@ -14,13 +14,15 @@ import { DragScrollModule } from 'ngx-drag-scroll';
 import { MatListModule } from '@angular/material/list';
 import { LikeLogService } from 'src/services/like-log-service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     PopularMovieComponent,
     MostLikedMoviesComponent,
-   
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatListModule,
     BrowserAnimationsModule,
     MatCardModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
 
   ],
   providers: [LikeLogService],

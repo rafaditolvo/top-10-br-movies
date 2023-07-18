@@ -14,20 +14,20 @@ h1 {
 
 .rank-list {
   display: flex;
-  overflow-x: auto; /* Para permitir a rolagem horizontal se houver muitos filmes */
-  gap: 16px; /* Espaçamento entre os filmes */
-  padding: 16px; /* Espaçamento interno para o rodapé */
+  overflow-x: auto; 
+  gap: 16px; 
+  padding: 16px; 
   background-color: rgb(215, 187, 187);
 }
 
-/* Estilo para cada item do ranking */
+
 .rank-item {
   display: flex;
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 12px;
-  padding: 8px; /* Espaçamento interno para cada item */
-  min-width: 100px; /* Largura mínima para garantir que os filmes não fiquem muito estreitos */
+  padding: 8px; 
+  min-width: 100px; 
 }
 
 .rank-number {

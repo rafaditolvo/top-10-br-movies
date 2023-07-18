@@ -9,16 +9,27 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getMostLikedMovies();
+    this.verificarLogado();
   }
-  title = 'frontend';
+  title = 'TOP 10 FILMES';
   public movies: any;
   filmes: any[] = [];
+  deslogado: boolean = true;
   totalLikes: { [movieId: number]: number } = {};
 
   constructor(private http: HttpClient) {}
 
   refresh() {
     this.getMostLikedMovies();
+  }
+
+  verificarLogado() {
+    const token = localStorage.getItem('token');
+    console.log(token);
+    if(token){
+      this.deslogado = false;
+      console.log("logado")
+    }
   }
 
   getMostLikedMovies() {
@@ -34,10 +45,5 @@ export class AppComponent implements OnInit {
       });
   }
 
-  // login() {
-  //   this.http.post<any[]>('http://localhost:4000/auth/login', {
-  //     username: 'admin',
-  //     password: 'admin',
-  //   });
-  // }
+  
 }

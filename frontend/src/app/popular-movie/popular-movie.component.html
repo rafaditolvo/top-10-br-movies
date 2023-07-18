@@ -1,20 +1,20 @@
 <div class="background">
   <div class="header">
-    <h1>TOP 10 FILMES BRASILEIROS TMDB</h1>
+    <h1>TOP 10 FILMES TMDB</h1>
   </div>
   <div class="movie-container">
     <div class="carousel-cell" *ngFor="let movie of movies">
       <mat-card class="movie-card mat-elevation-z4" [ngClass]="{'liked': movie.liked, 'show-liked-card': movie.liked && !movie.flipped}">
         <div class="movie-image" (click)="flipCard(movie)">
           <img [src]="getImageUrl(movie.poster_path)" alt="{{ movie.title }}" class="movie-poster">
-          <!-- Coração centralizado -->
+         
           <mat-icon class="like-icon-center" *ngIf="movie.liked && !movie.flipped">favorite</mat-icon>
-          <!-- Botão de curtir -->
+  
           <button mat-icon-button color="primary" class="like-button custom-like-button" *ngIf="!movie.liked" (click)="likeMovie(movie)">
             <mat-icon>favorite_border</mat-icon>
             <span class="like-button-text">Curtir</span>
           </button>
-          <!-- Botão de curtir desativado -->
+     
           <button mat-icon-button color="primary" class="like-button" *ngIf="movie.liked" disabled>
             <mat-icon>favorite</mat-icon>
             <span class="like-button-text">Curtir</span>

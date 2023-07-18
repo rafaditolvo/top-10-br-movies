@@ -1,0 +1,11 @@
+<div class="container-dialog">
+  <form class="container-body" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label>Login</label>
+      <input type="text"  formControlName="login" name="login">
+
+    <label>Senha</label>
+      <input type="password" formControlName="password" name="password">
+      <!-- <button (click)="login()">Logar</button> -->
+      <button type="submit">Logar</button>
+  </form>
+</div>
