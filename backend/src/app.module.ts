@@ -8,6 +8,8 @@ import { LikeSchema } from './likes/like.model';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { MovieSchema } from './movies/movies.model';
+import { MoviesModule } from './movies/movies.module';
+import { LikesModule } from './likes/likes.module';
 
 @Module({
   imports: [
@@ -16,9 +18,11 @@ import { MovieSchema } from './movies/movies.model';
     MongooseModule.forFeature([{ name: 'Movie', schema: MovieSchema }]),
     AuthModule,
     UsersModule,
+    MoviesModule,
+    LikesModule
 
   ],
   controllers: [LikesController, MoviesController],
-  providers: [LikesService, MoviesService],
+  providers: [LikesService, MoviesService]
 })
 export class AppModule {}

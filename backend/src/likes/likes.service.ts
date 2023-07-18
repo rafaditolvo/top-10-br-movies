@@ -9,9 +9,10 @@ import { MoviesService } from "src/movies/movies.service";
 export class LikesService {
   constructor(
     @InjectModel("Like") private likeModel: Model<Like>,
-    private movieService: MoviesService,
+    @Inject(MoviesService) public movieService: MoviesService,
     @InjectConnection() private connection: Connection
   ) {}
+
 
   async createLike(
     movieId: number,
