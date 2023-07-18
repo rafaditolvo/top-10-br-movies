@@ -31,6 +31,8 @@ Instale o MongoDB Compass se ainda não estiver instalado.
 Crie um novo banco de dados com o nome movies-db no MongoDB Compass.
 Dentro do banco de dados movies-db, crie duas coleções com os nomes likes e movies.
 
+Foi criada uma visualização (view) no MongoDB com o nome 'filmesMaisCurtidos' para listar os filmes com base no número de curtidas que receberam.
+
 #Variáveis de Ambiente:
 
 Renomeie o arquivo .env_copy para .env e forneça as variáveis de ambiente necessárias.
@@ -45,12 +47,12 @@ Observação: Para entrar na aplicação, utilize as seguintes credenciais:
 **Senha: admin**
 
 
-Funcionalidades
+# Funcionalidades
 Lista de filmes com um botão de curtir para cada um.
 Possibilidade de curtir filmes, e as curtidas serão salvas no banco de dados MongoDB por meio da API NestJS.
 Implementação de autenticação JWT para proteger os endpoints da API.
-Visualização no MongoDB
-Foi criada uma visualização (view) no MongoDB com o nome 'filmesMaisCurtidos' para listar os filmes com base no número de curtidas que receberam.
+
+
 
 # Testes
 A API do back-end é testada utilizando o framework de testes Jest.
