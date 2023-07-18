@@ -35,7 +35,7 @@ Foi criada uma visualização (view) no MongoDB com o nome 'filmesMaisCurtidos' 
 
 #Variáveis de Ambiente:
 
-Renomeie o arquivo .env_copy para .env e forneça as variáveis de ambiente necessárias.
+Renomeie o arquivo .env_example para .env e forneça as variáveis de ambiente necessárias.
 Executando as Aplicações:
 
 # Acessando a Aplicação:
