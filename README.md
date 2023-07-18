@@ -36,15 +36,15 @@ Dentro do banco de dados movies-db, crie duas coleções com os nomes likes e mo
 Renomeie o arquivo .env_copy para .env e forneça as variáveis de ambiente necessárias.
 Executando as Aplicações:
 
-Em janelas de terminal separadas, execute o back-end e o front-end.
-
 # Acessando a Aplicação:
 
 Abra o seu navegador e acesse http://localhost:4200 para acessar o front-end Angular.
 Observação: Para entrar na aplicação, utilize as seguintes credenciais:
 
-Usuário: admin
-Senha: admin
+**Usuário: admin**
+**Senha: admin**
+
+
 Funcionalidades
 Lista de filmes com um botão de curtir para cada um.
 Possibilidade de curtir filmes, e as curtidas serão salvas no banco de dados MongoDB por meio da API NestJS.
