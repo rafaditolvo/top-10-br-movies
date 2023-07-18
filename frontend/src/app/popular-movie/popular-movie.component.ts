@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LikeLogService } from 'src/services/like-log-service';
+
 
 @Component({
   selector: 'app-popular-movie',
@@ -14,7 +14,7 @@ export class PopularMovieComponent implements OnInit {
   @Input() moviesCarrosel: any[] = [];
   @Output() refresh = new EventEmitter();
 
-  constructor(private http: HttpClient, private likeLogService: LikeLogService) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.fetchPopularMovies();
@@ -51,7 +51,7 @@ export class PopularMovieComponent implements OnInit {
       () => {
         this.message = 'Curtida registrada com sucesso!';
         movie.liked = true;
-        this.likeLogService.adicionarCurtida(movie);
+      
       
         setTimeout(() => {
           this.message = '';

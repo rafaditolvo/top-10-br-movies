@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { LikeLogService } from 'src/services/like-log-service';
+
 
 @Component({
   selector: 'app-most-liked-movies',
@@ -18,7 +18,7 @@ export class MostLikedMoviesComponent implements OnInit {
   constructor(
     private http: HttpClient,
   
-    private likeLogService: LikeLogService 
+    
   ) { }
 
   ngOnInit() {

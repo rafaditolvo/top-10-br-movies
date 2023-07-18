@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MostLikedMoviesComponent } from './most-liked-movies/most-liked-movies.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { MatListModule } from '@angular/material/list';
-import { LikeLogService } from 'src/services/like-log-service';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -39,7 +39,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
 
   ],
-  providers: [LikeLogService],
+ 
   bootstrap: [AppComponent]
 
 })
