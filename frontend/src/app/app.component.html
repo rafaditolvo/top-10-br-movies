@@ -1,5 +1,5 @@
 <div>
-
-  <app-popular-movie></app-popular-movie>
-  <app-most-liked-movies></app-most-liked-movies>
+  <app-popular-movie (refresh)="refresh()"></app-popular-movie>
+  <app-most-liked-movies [mostLikedMovies]=filmes></app-most-liked-movies>
 </div>
+

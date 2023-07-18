@@ -1,8 +1,19 @@
-<h2>Filmes Mais Curtidos</h2>
-
-<ul>
-  <li *ngFor="let filme of filmes">
-    <img [src]="getImageUrl(filme.poster_path)" alt="{{ filme.movieName }}" width="64px" class="movie-poster">
-    {{ filme.movieName }} ({{ filme.totalLikes }} likes)
-  </li>
-</ul>
+<!-- most-liked-movies.component.html -->
+<div class="background">
+  <div class="rank-container">
+    <h1>RANKING FILMES</h1>
+  
+    <div class="rank-item" *ngFor="let filme of filmes; let i = index">
+      <div class="rank-number">{{ i + 1 }}</div>
+      <div class="rank-content">
+        <img [src]="getImageUrl(filme.poster_path)" alt="{{ filme.movieName }}" class="movie-poster">
+        <div class="movie-details">
+      
+          <p class="movie-title">{{ filme.movieName }}</p>
+          <p class="movie-likes">{{ filme.totalLikes }} likes</p> <!-- Utilize data binding para exibir o número de curtidas -->
+         <!-- Adicione um botão para curtir o filme -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+import { LikeLogService } from 'src/services/like-log-service';
 
 @Component({
   selector: 'app-most-liked-movies',
@@ -7,21 +9,27 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./most-liked-movies.component.css']
 })
 export class MostLikedMoviesComponent implements OnInit {
-  filmes: any[] = []; // Definindo valor inicial para a propriedade filmes
+  filmes: any[] = [];
+  totalLikes: { [movieId: number]: number } = {};
+  message: string | undefined;
 
-  constructor(private http: HttpClient) { }
+  @Input() mostLikedMovies: any[] = [];
+
+  constructor(
+    private http: HttpClient,
+  
+    private likeLogService: LikeLogService 
+  ) { }
 
   ngOnInit() {
-    this.getMostLikedMovies();
+    this.filmes = this.mostLikedMovies;
   }
 
-  getMostLikedMovies() {
-    this.http.get<any[]>('http://localhost:4000/likes/most-liked-movies').subscribe(filmes => {
-      console.log(filmes)
-      this.filmes = filmes;
-    });
+  ngOnChanges() {
+    this.filmes = this.mostLikedMovies;
   }
+  
   getImageUrl(posterPath: string): string {
-    return 'https://image.tmdb.org/t/p/original' + posterPath;
+    return 'https://www.themoviedb.org/t/p/original' + posterPath;
   }
 }
