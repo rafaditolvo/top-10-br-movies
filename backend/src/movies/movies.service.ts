@@ -14,8 +14,10 @@ export class MoviesService {
       api_key: apiKey,
       language: "pt-BR",
       region: "BR",
+      sort_by: "popularity.desc",    
     };
 
+ 
     try {
       const response = await axios.get(endpoint, { params });
       const movies = response.data.results.slice(0, 10); // Retorna apenas os 10 primeiros filmes
