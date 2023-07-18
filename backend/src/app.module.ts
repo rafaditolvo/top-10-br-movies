@@ -10,10 +10,12 @@ import { UsersModule } from './users/users.module';
 import { MovieSchema } from './movies/movies.model';
 import { MoviesModule } from './movies/movies.module';
 import { LikesModule } from './likes/likes.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/movies-db'),
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGO_DB),
     MongooseModule.forFeature([{ name: 'Like', schema: LikeSchema }]),
     MongooseModule.forFeature([{ name: 'Movie', schema: MovieSchema }]),
     AuthModule,
