@@ -61,6 +61,7 @@ export class PopularMovieComponent implements OnInit {
       (error) => {
         console.error('Falha ao registrar a curtida:', error);
         this.message = 'Falha ao registrar a curtida. Por favor, tente novamente.';
+        window.alert(this.message)
       }
     );
   }
