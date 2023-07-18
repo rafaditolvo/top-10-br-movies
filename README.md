@@ -15,6 +15,16 @@ Clone o repositório.
 
 Instale as dependências do back-end e do front-end.
 
+Em janelas de terminal separadas, execute o back-end e o front-end:
+
+# Para o back-end:
+cd backend 
+npm start
+
+# Para o front-end:
+cd frontend 
+ng serve
+
 # Configuração do MongoDB:
 
 Instale o MongoDB Compass se ainda não estiver instalado.
