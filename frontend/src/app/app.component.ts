@@ -25,10 +25,8 @@ export class AppComponent implements OnInit {
 
   verificarLogado() {
     const token = localStorage.getItem('token');
-    console.log(token);
     if(token){
       this.deslogado = false;
-      console.log("logado")
     }
   }
 

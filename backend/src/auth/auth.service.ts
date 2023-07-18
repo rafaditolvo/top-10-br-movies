@@ -10,7 +10,6 @@ export class AuthService {
   ) {}
 
   async signIn(username, pass) {
-    console.log(process.env.JWT_TOKEN)
     const user = await this.usersService.findOne(username);
     if (user?.password !== pass) {
       throw new UnauthorizedException();

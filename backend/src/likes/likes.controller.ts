@@ -24,7 +24,6 @@ export class LikesController {
   @Get('/most-liked-movies')
   async getMostLikedMovies(): Promise<any> {
     const mostLikedMovies = await this.likesService.getMostLikedMovies();
-    console.log(mostLikedMovies)
     return mostLikedMovies;
   }
 

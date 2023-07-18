@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
       username: login,
       password: password,
     }).subscribe((response:any) => {
-      console.log(response);
       localStorage.setItem('token', response.access_token);
       this.verificarLogado.emit();
     });
